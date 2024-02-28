@@ -1,0 +1,15 @@
+query threadTimeline($threadId: ID!, $first: Int, $after: String, $last: Int, $before: String) {
+  thread(threadId: $threadId) {
+    timelineEntries(first: $first, after: $after, last: $last, before: $before) {
+      edges {
+        cursor
+        node {
+          ...TimelineEntryParts
+        }
+      }
+      pageInfo {
+        ...PageInfoParts
+      }
+    }
+  }
+}

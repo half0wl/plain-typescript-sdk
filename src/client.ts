@@ -49,6 +49,8 @@ import {
   type ThreadEventPartsFragment,
   type ThreadPartsFragment,
   ThreadsDocument,
+  ThreadTimelineDocument,
+  type TimelineEntryPartsFragment,
   UnassignThreadDocument,
   UpdateCustomerCardConfigDocument,
   UpdateWebhookTargetDocument,
@@ -516,6 +518,24 @@ export class PlainClient {
     });
 
     return unwrapData(res, (q) => q.threadByExternalId);
+  }
+
+  /**
+   * Fetch a list of timeline entries for a thread.
+   */
+  async getThreadTimelineEntries(variables: VariablesOf<typeof ThreadTimelineDocument>): SDKResult<{
+    timelineEntries: TimelineEntryPartsFragment[];
+    pageInfo: PageInfoPartsFragment | null;
+  }> {
+    const res = await request(this.#ctx, {
+      query: ThreadTimelineDocument,
+      variables,
+    });
+
+    return unwrapData(res, (q) => ({
+      timelineEntries: q.thread?.timelineEntries.edges.map((edge) => edge.node) || [],
+      pageInfo: q.thread?.timelineEntries.pageInfo || null,
+    }));
   }
 
   /**

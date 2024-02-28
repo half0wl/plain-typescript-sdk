@@ -1,0 +1,23 @@
+fragment EmailEntryParts on EmailEntry {
+  to {
+    name
+    email
+  }
+  from {
+    name
+    email
+  }
+  emailId
+  subject
+  textContent
+  markdownContent
+  fullTextContent
+  fullMarkdownContent
+  isStartOfThread
+  sentAt {
+    iso8601
+  }
+  receivedAt {
+    iso8601
+  }
+}

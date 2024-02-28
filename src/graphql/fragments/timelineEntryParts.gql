@@ -9,6 +9,9 @@ fragment TimelineEntryParts on TimelineEntry {
   }
   entry {
     __typename
+    ... on EmailEntry {
+      ...EmailEntryParts
+    }
     # Why are we not querying for the full entry?
     # --
     # We could be returning the full entry we just created here

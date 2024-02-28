@@ -12,6 +12,7 @@ import {
   type DateTimePartsFragment as OriginalDateTimePartsFragment,
   type DeletedCustomerActorPartsFragment as OriginalDeletedCustomerActorPartsFragment,
   type EmailActorPartsFragment as OriginalEmailActorPartsFragment,
+  type EmailEntryPartsFragment as OriginalEmailEntryPartsFragment,
   type EmailParticipantPartsFragment as OriginalEmailParticipantPartsFragment,
   type EmailPartsFragment as OriginalEmailPartsFragment,
   type FileSizePartsFragment as OriginalFileSizePartsFragment,
@@ -64,6 +65,7 @@ export type CustomerPartsFragment = Public<OriginalCustomerPartsFragment>;
 export type DateTimePartsFragment = Public<OriginalDateTimePartsFragment>;
 export type DeletedCustomerActorPartsFragment = Public<OriginalDeletedCustomerActorPartsFragment>;
 export type EmailActorPartsFragment = Public<OriginalEmailActorPartsFragment>;
+export type EmailEntryPartsFragment = Public<OriginalEmailEntryPartsFragment>;
 export type EmailParticipantPartsFragment = Public<OriginalEmailParticipantPartsFragment>;
 export type EmailPartsFragment = Public<OriginalEmailPartsFragment>;
 export type FileSizePartsFragment = Public<OriginalFileSizePartsFragment>;
