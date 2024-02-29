@@ -47,6 +47,7 @@ import {
   ThreadByExternalIdDocument,
   ThreadDocument,
   type ThreadEventPartsFragment,
+  ThreadIdForTimelineEntryDocument,
   type ThreadPartsFragment,
   ThreadsDocument,
   ThreadTimelineDocument,
@@ -536,6 +537,22 @@ export class PlainClient {
       timelineEntries: q.thread?.timelineEntries.edges.map((edge) => edge.node) || [],
       pageInfo: q.thread?.timelineEntries.pageInfo || null,
     }));
+  }
+
+  /**
+   * Get a thread ID for a timeline entry.
+   */
+  async getThreadIdForTimelineEntry(
+    variables: VariablesOf<typeof ThreadIdForTimelineEntryDocument>
+  ): SDKResult<{
+    threadId: string | null;
+  }> {
+    const res = await request(this.#ctx, {
+      query: ThreadIdForTimelineEntryDocument,
+      variables,
+    });
+
+    return unwrapData(res, (q) => ({ threadId: q.timelineEntry?.threadId || null }));
   }
 
   /**

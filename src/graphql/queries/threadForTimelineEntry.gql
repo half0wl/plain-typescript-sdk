@@ -1,0 +1,5 @@
+query threadIdForTimelineEntry($customerId: ID!, $timelineEntryId: ID!) {
+  timelineEntry(customerId:$customerId, timelineEntryId:$timelineEntryId) {
+    threadId
+  }
+}
